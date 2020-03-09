@@ -4,7 +4,7 @@ SEOTitle: Quinn的博客 | Quinn Blog
 header-img: img/header.jpg
 email: zak2458@163.com
 description: "Better late than never !"
-#keyword: "BY, BY Blog, 柏荧的博客, quinn, 邱柏荧, iOS, Apple, iPhone"
+#keyword: "Quinn博客, ops，运维"
 url: "http://quinnops.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 #github_repo: "https://github.com/quinn/quinn.github.io.git" # you code repository
