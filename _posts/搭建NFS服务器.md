@@ -1,0 +1,122 @@
+---
+layout:     post
+title:      centos下搭建nfs服务器并实现挂载
+date:       2020-03-10
+author:     Quinn
+header-img: img/post-bg-debug.png
+catalog: true
+tags:
+    - centos
+    - nfs
+---
+
+客户端和服务端都要安装nfs-utils rpcbind
+
+```shell
+yum install nfs-utils rpcbind (centos 6)
+```
+
+
+
+服务端设置（192.168.108.131）：
+
+创建共享目录：mkdir /share
+
+设置权限（参考）：chmod –R 777 /share
+
+编辑配置文件（注意IP和权限配置之间没有空格）：
+
+```shell
+vim /etc/exports
+/share 192.168.108.130 (rw,sync,root_squash)
+```
+
+启动服务，并设置开机启动
+
+```shell
+service rpcbind start
+
+service nfs start
+
+chkconfig rpcbind on
+
+chkconfig nfs on
+```
+
+ 
+
+客户端配置（192.168.108.130）：
+
+```shell
+mkdir /share
+```
+
+查看服务端共享目录：
+
+```
+showmount –e 192.168.108.131
+```
+
+如果报错请关闭服务端防火墙或开放端口：
+
+nfs固定开放端口后续会再出一份详细的介绍
+
+clnt_create: RPC: Port mapper failure - Unable to receive: errno 113(No route to host)）
+
+挂载共享目录到本地，并测试读写：
+
+```shell
+mount -t nfs 192.168.108.131:/share /share
+```
+
+ 
+
+挂载时报错
+
+mount.nfs:access denied by server while mounting 172.16.12.153:/share
+
+在权限管理文件中加insecure：
+
+```shell
+/share* (insecure,rw,sync,root_squash)
+```
+
+ 
+
+```shell
+cd /share && touch a
+```
+
+取消挂载：
+
+```shell
+umount –f /share
+```
+
+umount –l /share在busy的时候会等待占用消除再取消挂载
+
+设置开机自动挂载：
+
+```shell
+vim /etc/fstab
+192.168.108.131:/share   /share nfs defaults  0 0
+```
+
+ 
+
+
+
+参数说明：
+rw：read-write，可读写；
+ro：read-only，只读；
+sync：同步写入（文件同时写入硬盘和内存），适用在通信比较频繁且实时性比较高的场合
+async：异步写入（文件先写入内存，稍候再写入硬盘），性能较好（速度快），适合超大或者超多文件的写入，但有数据丢失的风险，比如突然断电等情况；
+root_squash（默认）：将来访的root用户映射为匿名用户或用户组；
+no_root_squash：来访的root用户保持root帐号权限（可能会不安全）；
+no_all_squash（默认）：访问用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；
+all_squash：将来访的所有用户映射为匿名用户或用户组；
+secure（默认）：限制客户端只能从小于1024的tcp/ip端口连接服务器；
+insecure：允许客户端从大于1024的tcp/ip端口连接服务器；
+anonuid：匿名用户的UID值，通常是nobody或nfsnobody，可以在此处自行设定；
+anongid：匿名用户的GID值；
+no_subtree_check：如果NFS输出的是一个子目录，则无需检查其父目录的权限（可以提高效率）
