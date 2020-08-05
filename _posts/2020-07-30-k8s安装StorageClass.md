@@ -1,3 +1,17 @@
+---
+layout:     post
+title:      k8s安装StorageClass
+date:       2020-03-10
+author:     Quinn
+header-img: img/post-bg-debug.png
+catalog: true
+tags:
+    - k8s
+    - StorageClass
+---
+
+
+
 前提配置好nfs服务端
 
 并确保客户端可以正常挂载
