@@ -39,7 +39,7 @@ TIMEOUT=3			超时时长（秒）
 //不启用ssl加密传输
 -Dcom.sun.management.jmxremote.ssl=false
 //运行tomcat主机的IP地址
--Djava.rmi.server.hostname=10.0.0.7"
+-Djava.rmi.server.hostname=10.0.0.7
 //启用密码验证(jmxremote.password为密码文件，第一列是用户名，第二列是密码，文件权限600)
 -Dcom.sun.management.jmxremote.password.file=jmxremote.password
 ```
