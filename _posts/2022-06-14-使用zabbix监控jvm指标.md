@@ -60,5 +60,5 @@ StartJavaPollers=5
 
 ![](https://github.com/QuinnOps/QuinnOps.github.io/blob/master/img/zabbix-jvm.jpg)
 
-![](https://github.com/QuinnOps/QuinnOps.github.io/blob/master/img/zabbix-jvm-template.jpg)
+![](https://photo.quinnops.top/picture.php?/16/category/4)
 
