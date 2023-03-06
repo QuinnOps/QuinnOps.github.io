@@ -58,7 +58,7 @@ StartJavaPollers=5
 
 通过zabbix web 配置主机，如图，添加jmx配置和模板
 
-![](https://quinnn.s3.ap-northeast-1.amazonaws.com/QuinnOps.github.io/zabbix-jvm.jpg)
+![](https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrekw0cvohur/b/Quinn/o/QuinnOps.github.io%2Fzabbix-jvm.jpg)
 
-![](https://quinnn.s3.ap-northeast-1.amazonaws.com/QuinnOps.github.io/zabbix-jvm-template.jpg)
+![](https://objectstorage.ap-tokyo-1.oraclecloud.com/n/nrekw0cvohur/b/Quinn/o/QuinnOps.github.io%2Fzabbix-jvm-template.jpg)
 
