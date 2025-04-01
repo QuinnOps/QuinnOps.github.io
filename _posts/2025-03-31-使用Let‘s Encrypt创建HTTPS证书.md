@@ -7,10 +7,10 @@ header-img: img/post-bg-debug.png
 catalog: true
 tags:
     - nginx
-    - SSL
-    - TLS
+    - ssl
+    - tls
     - Let‘s Encrypt
-    - Certbot
+    - certbot
 
 
 ---
