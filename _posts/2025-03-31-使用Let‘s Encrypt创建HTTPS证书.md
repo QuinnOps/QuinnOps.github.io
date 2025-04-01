@@ -43,7 +43,7 @@ Certbot官网提供了安装方式，选择好安装证书的软件和操作系�
 #sudo yum remove certbot -y
 ```
 
- #### 2、安装 snapd
+#### 2、安装 snapd
 
 ```
 #sudo yum install -y snapd
@@ -52,7 +52,7 @@ Certbot官网提供了安装方式，选择好安装证书的软件和操作系�
 ```
 
 
- #### 3、通过 snap 安装 certbot
+#### 3、通过 snap 安装 certbot
 
 ```
 #sudo snap install --classic certbot
